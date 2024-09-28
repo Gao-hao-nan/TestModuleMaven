@@ -18,7 +18,7 @@ afterEvaluate {
                 pom {
                     name = 'fragmentation'
                     description = 'fragmentation'
-                    url = 'http://103.149.90.60:9090/repository/haonan/'
+                    url = '私有maven库的地址'
                 }
             }
         }
@@ -26,7 +26,7 @@ afterEvaluate {
         repositories {
             maven {
                 allowInsecureProtocol true
-                url = 'http://103.149.90.60:9090/repository/haonan/'
+                url = '私有maven库的地址'
                 credentials {
                     username ''
                     password ''
