@@ -1,0 +1,41 @@
+apply plugin: "maven-publish"
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+
+                groupId 'com.wln100.future'
+                artifactId 'fragmentation'
+                version '1.0.0-SNAPSHOT'
+
+                if (isAndroidEnv(project)) {
+                    from project.components.release
+                } else {
+                    from project.components.java
+                }
+
+                pom {
+                    name = 'fragmentation'
+                    description = 'fragmentation'
+                    url = 'http://103.149.90.60:9090/repository/haonan/'
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                allowInsecureProtocol true
+                url = 'http://103.149.90.60:9090/repository/haonan/'
+                credentials {
+                    username ''
+                    password ''
+                }
+            }
+        }
+    }
+}
+
+static def isAndroidEnv(Project project) {
+    return project.getPlugins().hasPlugin('com.android.application') || project.getPlugins().hasPlugin('com.android.library')
+}
